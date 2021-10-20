@@ -1,13 +1,26 @@
 import React from 'react';
-import StateFullModals from './components/StateFullModals/StateFullModals';
-import ContextModals from './components/ContextModals/ContextModals';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import NavBar from './components/NavBar';
+import ModalsPage from './pages/ModalsPage';
+import ReduxPage from './pages/ReduxPage';
+
+import store from './redux/configureStore';
+
+import { Wrapper } from './App.styles';
 
 const App: React.FC = () => {
   return (
-    <>
-      <StateFullModals />
-      <ContextModals />
-    </>
+    <Wrapper>
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBar />
+          <Route path="/modals" component={ModalsPage} />
+          <Route path="/redux" component={ReduxPage} />
+        </BrowserRouter>
+      </Provider>
+    </Wrapper>
   );
 };
 

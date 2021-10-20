@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import StyledButton from '../reusable/StyledButton/StyledButton';
-import ModalWindow from '../reusable/ModalWindow/ModalWindow';
+import StyledButton from '../Reusable/StyledButton/StyledButton';
+import ModalWindow from '../Reusable/ModalWindow/ModalWindow';
 
 import { Wrapper, Buttons } from './StateFullModals.styles';
 
@@ -10,19 +10,19 @@ const StateFullModals: React.FC = () => {
 
   const handleFirstModalOpen = () => {
     setFirstModalOpen(true);
-  }
+  };
 
   const handleFirstModalClose = () => {
     setFirstModalOpen(false);
-  }
+  };
 
   const handleSecondModalOpen = () => {
     setSecondModalOpen(true);
-  }
+  };
 
   const handleSecondModalClose = () => {
     setSecondModalOpen(false);
-  }
+  };
 
   return (
     <>
@@ -55,6 +55,6 @@ const StateFullModals: React.FC = () => {
       />
     </>
   );
-}
+};
 
 export default StateFullModals;

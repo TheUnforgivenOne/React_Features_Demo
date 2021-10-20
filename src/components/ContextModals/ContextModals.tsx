@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ModalWindow from '../reusable/ModalWindow/ModalWindow';
-import StyledButton from '../reusable/StyledButton/StyledButton';
+import ModalWindow from '../Reusable/ModalWindow/ModalWindow';
+import StyledButton from '../Reusable/StyledButton/StyledButton';
 import ContextModalExample from '../ContextModalExample/ContextModalExample';
 import { ModalsContextProvider } from '../../context/modalsContext';
 
@@ -9,11 +9,11 @@ const ContextModals: React.FC = () => {
 
   const handleModalOpen = () => {
     setIsOpen(true);
-  }
+  };
 
   const handleModalClose = () => {
     setIsOpen(false);
-  }
+  };
 
   return (
     <ModalsContextProvider value={handleModalOpen}>

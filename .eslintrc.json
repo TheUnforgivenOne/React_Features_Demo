@@ -25,7 +25,6 @@
         "react/no-array-index-key": "error",
         "indent": ["error", 2],
         "no-use-before-define": "off",
-        "semi": "off",
-        "@typescript-eslint/no-use-before-define": ["error"]
+        "semi": "off"
     }
 }
