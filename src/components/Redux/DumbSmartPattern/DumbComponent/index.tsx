@@ -1,7 +1,7 @@
 import React from 'react';
 
-import StyledButton from '../../Reusable/StyledButton/StyledButton';
-import { TodoType } from '../../../types/types';
+import StyledButton from '../../../Reusable/StyledButton/StyledButton';
+import { TodoType } from '../../../../types/types';
 import { SmartComponentProps } from '../SmartComponent';
 
 interface DumbComponentProps extends Omit<SmartComponentProps, 'selectedPage' | 'selectedLimit'> {
@@ -26,8 +26,8 @@ const DumbComponent: React.FC<DumbComponentProps> = ({
 
   return (
     <>
-      <h3>Redux with dumb and smart pattern</h3>
-      <p>Using dumb and smart pattern for fetching data via Redux</p>
+      <h3>Redux with dumb and smart components</h3>
+      <p>Using dumb and smart component pattern for fetching data via Redux</p>
       {pagesNumbers.map((page) => (
         <StyledButton key={page} onClick={() => handlePageClick(page)}>{page}</StyledButton>
       ))}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 
-import HooksPattern from '../../components/HooksPattern';
-import SmartComponent from '../../components/DumbSmartPattern/SmartComponent';
+import DefaultPattern from '../../components/Redux/DefaultPattern';
+import HooksPattern from '../../components/Redux/HooksPattern';
+import SmartComponent from '../../components/Redux/DumbSmartPattern/SmartComponent';
 
 import { ReduxPageLinks } from './ReduxPage.styles';
 
@@ -14,9 +15,19 @@ const ReduxPage: React.FC = () => {
   return (
     <div>
       <ReduxPageLinks>
+        <Link to="/redux/default">Default</Link>
         <Link to="/redux/hooks">Hooks</Link>
         <Link to="/redux/dumbsmart">DumbSmart</Link>
       </ReduxPageLinks>
+      <Route path="/redux/default">
+        <DefaultPattern
+          selectedPage={selectedPage}
+          selectedLimit={selectedLimit}
+          pagesNumbers={pagesNumbers}
+          setSelectedPage={setSelectedPage}
+          setSelectedLimit={setSelectedLimit}
+        />
+      </Route>
       <Route path="/redux/hooks">
         <HooksPattern
           selectedPage={selectedPage}

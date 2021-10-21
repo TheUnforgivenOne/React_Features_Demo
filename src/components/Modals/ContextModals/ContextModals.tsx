@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ModalWindow from '../Reusable/ModalWindow/ModalWindow';
-import StyledButton from '../Reusable/StyledButton/StyledButton';
+import ModalWindow from '../../Reusable/ModalWindow/ModalWindow';
+import StyledButton from '../../Reusable/StyledButton/StyledButton';
 import ContextModalExample from '../ContextModalExample/ContextModalExample';
-import { ModalsContextProvider } from '../../context/modalsContext';
+import { ModalsContextProvider } from '../../../context/modalsContext';
 
 const ContextModals: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

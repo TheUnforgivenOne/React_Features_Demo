@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos, resetState, selectTodos } from '../../redux/reducers/todosReducer';
+import { useDispatch, useSelector } from '../../../redux/hooks';
+import { fetchTodos, resetState, selectTodos } from '../../../redux/reducers/todosReducer';
 
 export const useTodos = () => {
   const { loadingState, items } = useSelector(selectTodos);

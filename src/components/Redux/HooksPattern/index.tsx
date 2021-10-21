@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useTodos } from './useTodos';
-import StyledButton from '../Reusable/StyledButton/StyledButton';
+import StyledButton from '../../Reusable/StyledButton/StyledButton';
 
 interface HooksPatternProps {
   selectedPage: number;

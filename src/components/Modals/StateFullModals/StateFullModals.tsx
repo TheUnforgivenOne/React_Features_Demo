@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import StyledButton from '../Reusable/StyledButton/StyledButton';
-import ModalWindow from '../Reusable/ModalWindow/ModalWindow';
+import StyledButton from '../../Reusable/StyledButton/StyledButton';
+import ModalWindow from '../../Reusable/ModalWindow/ModalWindow';
 
 import { Wrapper, Buttons } from './StateFullModals.styles';
 
