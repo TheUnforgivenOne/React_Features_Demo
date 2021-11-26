@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from '../../../redux/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos, resetState, selectTodos } from '../../../redux/reducers/todosReducer';
 
 import StyledButton from '../../Reusable/StyledButton/StyledButton';
@@ -65,7 +65,7 @@ const DefaultPattern: React.FC<HDefaultPatternProps> = ({
             {items.length
               ? (
                 <div>
-                  {items.map((item) => (
+                  {items.map((item: { id: number }) => (
                     <div key={item.id}>{JSON.stringify(item, null, 2)}</div>
                   ))}
                 </div>

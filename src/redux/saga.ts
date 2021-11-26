@@ -9,14 +9,9 @@ export function * fetchTodosSaga () {
     _start: 0,
     _limit: 20
   };
-  // eslint-disable-next-line no-console
-  console.log('query', todosQuery);
 
   // @ts-ignore
-  // const response = yield call(async () => await JSONService.getTodos(todosQuery));
   const response = yield JSONService.getTodos(todosQuery);
-  // eslint-disable-next-line no-console
-  console.log('response', response);
   yield put(setTodos(response));
 }
 

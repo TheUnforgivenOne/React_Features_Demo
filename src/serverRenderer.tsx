@@ -39,8 +39,6 @@ export default () => {
       />
     );
 
-    // renderToString(root());
-
     if (context.url) {
       res.writeHead(302, {
         Location: context.url

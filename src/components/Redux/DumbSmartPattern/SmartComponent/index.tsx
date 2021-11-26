@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from '../../../../redux/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos, resetState, selectTodos } from '../../../../redux/reducers/todosReducer';
 
 import DumbComponent from '../DumbComponent';
