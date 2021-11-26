@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { useTodos } from './useTodos';
 import StyledButton from '../../Reusable/StyledButton/StyledButton';
-import { TodoType } from '../../../types/types';
-import { SmartComponentProps } from '../SmartComponent';
 
-interface DumbComponentProps extends Omit<SmartComponentProps, 'selectedPage' | 'selectedLimit'> {
-  loadingState: string;
-  items: TodoType[]
+interface HooksPatternProps {
+  selectedPage: number;
+  selectedLimit: number;
+  pagesNumbers: number[];
+  setSelectedPage: (value: number) => void;
+  setSelectedLimit: (value: number) => void;
 }
 
-const DumbComponent: React.FC<DumbComponentProps> = ({
-  loadingState,
-  items,
+const HooksPattern: React.FC<HooksPatternProps> = ({
+  selectedPage,
+  selectedLimit,
   pagesNumbers,
   setSelectedPage,
   setSelectedLimit
 }) => {
+  const { loadTodos, resetTodos, loadingState, items } = useTodos();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TODOS_SAGA' });
+
+    return () => {
+      resetTodos();
+      setSelectedPage(1);
+      setSelectedLimit(10);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadTodos(selectedPage, selectedLimit);
+  }, [selectedPage, selectedLimit]);
+
   const handlePageClick = (page: number) => {
     setSelectedPage(page);
   };
@@ -26,8 +46,8 @@ const DumbComponent: React.FC<DumbComponentProps> = ({
 
   return (
     <>
-      <h3>Redux with dumb and smart pattern</h3>
-      <p>Using dumb and smart pattern for fetching data via Redux</p>
+      <h3>Redux with hooks</h3>
+      <p>Using custom hook for fetching data via Redux</p>
       {pagesNumbers.map((page) => (
         <StyledButton key={page} onClick={() => handlePageClick(page)}>{page}</StyledButton>
       ))}
@@ -47,7 +67,7 @@ const DumbComponent: React.FC<DumbComponentProps> = ({
             {items.length
               ? (
                 <div>
-                  {items.map((item) => (
+                  {items.map((item: { id: string }) => (
                     <div key={item.id}>{JSON.stringify(item, null, 2)}</div>
                   ))}
                 </div>
@@ -63,4 +83,4 @@ const DumbComponent: React.FC<DumbComponentProps> = ({
   );
 };
 
-export default DumbComponent;
+export default HooksPattern;
