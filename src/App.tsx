@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import NavBar from './components/NavBar';
@@ -7,18 +8,27 @@ import ModalsPage from './pages/ModalsPage';
 import ReduxPage from './pages/ReduxPage';
 
 import store from './redux/configureStore';
+import { routes } from './routes';
 
 import { Wrapper } from './App.styles';
 
-const App: React.FC = () => {
+interface AppProps {
+  context?: { url?: string };
+  location?: string;
+  Router: any;
+  store: any;
+}
+
+const App: React.FC<AppProps> = ({ context, location, Router, store }) => {
   return (
     <Wrapper>
       <Provider store={store}>
-        <BrowserRouter>
+        <Router location={location} context={context}>
           <NavBar />
-          <Route path="/modals" component={ModalsPage} />
-          <Route path="/redux" component={ReduxPage} />
-        </BrowserRouter>
+          {routes.map(({ path, component }) => (
+            <Route key={path} path={path} component={component} />
+          ))}
+        </Router>
       </Provider>
     </Wrapper>
   );

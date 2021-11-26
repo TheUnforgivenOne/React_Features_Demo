@@ -1,4 +1,5 @@
 import { QueryType } from '../types/types';
+import axios from 'axios';
 
 class JSONService {
   private baseUrl: string = 'https://jsonplaceholder.typicode.com';
@@ -17,7 +18,7 @@ class JSONService {
   private static getRequest (url: string, query: QueryType) {
     const queryStr: string = Object.keys(query).length ? '?' + this.queryToString(query) : '';
 
-    return fetch(url + queryStr).then((response) => response.json());
+    return axios(url + queryStr).then((response) => response.data);
   }
 
   getTodos (query: { _start: number; _limit: number }) {

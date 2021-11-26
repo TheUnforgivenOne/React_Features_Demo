@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { useTodos } from './useTodos';
 import StyledButton from '../Reusable/StyledButton/StyledButton';
@@ -19,8 +20,11 @@ const HooksPattern: React.FC<HooksPatternProps> = ({
   setSelectedLimit
 }) => {
   const { loadTodos, resetTodos, loadingState, items } = useTodos();
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({ type: 'FETCH_TODOS_SAGA' });
+
     return () => {
       resetTodos();
       setSelectedPage(1);
@@ -63,7 +67,7 @@ const HooksPattern: React.FC<HooksPatternProps> = ({
             {items.length
               ? (
                 <div>
-                  {items.map((item) => (
+                  {items.map((item: { id: string }) => (
                     <div key={item.id}>{JSON.stringify(item, null, 2)}</div>
                   ))}
                 </div>

@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../configureStore';
 import { TodoType } from '../../types/types';
 import JSONService from '../../services/JSONService';
 
@@ -24,11 +23,15 @@ const todosSlice = createSlice({
   name: 'todosSlice',
   initialState,
   reducers: {
-    resetState: () => initialState
+    setTodos: (state, action) => {
+      state.loadingState = 'ready';
+      state.items = action.payload;
+    },
+    resetState: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(fetchTodos.pending, (state) => {
-      state.loadingState = 'loading'
+      state.loadingState = 'loading';
     });
     builder.addCase(fetchTodos.fulfilled, (state, action: PayloadAction<{ todos: TodoType[] }>) => {
       state.loadingState = 'ready';
@@ -40,9 +43,9 @@ const todosSlice = createSlice({
   }
 });
 
-export const selectTodos = (state: RootState) => state.todos;
+export const selectTodos = (state: any) => state.todos;
 
-export const { resetState } = todosSlice.actions;
+export const { setTodos, resetState } = todosSlice.actions;
 
 export default todosSlice.reducer;
 
